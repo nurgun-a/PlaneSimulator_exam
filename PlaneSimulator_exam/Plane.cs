@@ -10,8 +10,6 @@ using System.IO;
 
 namespace PlaneSimulator_exam
 {
-    //if (SpeedChanged != null) SpeedChanged(this, speed);
-    //throw new Exception("Самолет разбился");
     class Plain
     {
         public int Speed { get; private set; }
@@ -102,7 +100,6 @@ namespace PlaneSimulator_exam
         public void OnDistanceChanged(double value)
         {
             Distance += (value * Speed);
-            WriteLine($"Пройденное растояние {Distance} км.");
         }
 
         public void Log(string str)
@@ -118,8 +115,6 @@ namespace PlaneSimulator_exam
         }
     }
 
-
-
     class Dispatcher
     {
         private string name;
@@ -133,7 +128,7 @@ namespace PlaneSimulator_exam
             this.controlDistanceStart = controlDistanceStart;
             this.controlDistanceEnd = controlDistanceEnd;
             Random rand = new Random();
-            correction = rand.Next(-200, 201); //генерация корректировки погодных условий
+            correction = rand.Next(-200, 201);
         }
 
         public bool Control(Plain plain)

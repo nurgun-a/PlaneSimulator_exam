@@ -21,8 +21,9 @@ namespace PlaneSimulator_exam
 
             Dispatcher dispatcher1 = new Dispatcher("Dispatcher 1", 0, 5000);
             Dispatcher dispatcher2 = new Dispatcher("Dispatcher 2", 5001, 10000);
-
             Random rand = new Random();
+            int n1 = rand.Next(-200, 201);
+            int n2 = rand.Next(-200, 201);
             Thread.Sleep(1000);
             th1.Start();
 
@@ -30,13 +31,8 @@ namespace PlaneSimulator_exam
             {
                 while (plain.Distance < 10000)
                 {
-
-                    //Thread.Sleep(1000); 
                     Clear();
-                    WriteLine("\n");
-                    int n1 = rand.Next(-200, 201);
-                    int n2 = rand.Next(-200, 201);
-
+                    WriteLine("\n"); 
                     if (dispatcher1.Control(plain)) { Show(plain, dispatcher1); }                 
                     if (dispatcher2.Control(plain)) { Show(plain, dispatcher2); }
                     plain.OnDistanceChanged(((double)ts.Min + ((double)ts.Sec / 60)));   
@@ -74,7 +70,7 @@ namespace PlaneSimulator_exam
                             
                                       Скорость: " + $"{pl.Speed}" + @"
                                         Высота: " + $"{pl.Height}" + @"
-                          Пойденное расстояние: " + $"{pl.Distance}" + @"  километров
+                          Пойденное расстояние: " + $"{Math.Round(pl.Distance,2)}" + @"  километров
 
 
                                  Штрафние очки: " + $"{pl.Penalty_points}" + @"
